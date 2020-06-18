@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 5555
+zuul:
+  SendErrorFilter:
+    error:
+      disable: true
+  routes:
+
+    UserServer:
+      path: /user-server/**
+      serviceId: CONSUMER
+    FeignServer:
+      path: /feign-server/**
+      serviceId: FEIGN-CUNSUMER
+    LocalServer:
+      path: /server-local/**
+      url: forward:/local
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.6:1111/eureka/
+  instance:
+    prefer-ip-address: true
