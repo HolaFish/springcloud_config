@@ -1,3 +1,5 @@
+from: git-default-1.0
+
 spring:
   application:
     name: api-gateway
